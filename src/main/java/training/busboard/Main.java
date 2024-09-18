@@ -1,15 +1,22 @@
-package training.busboard; 
+package training.busboard;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
+        Scanner myObj = new Scanner(System.in);
+        String inputId;
+
+        System.out.println(("Please enter the Stop ID:"));
+        inputId = myObj.nextLine();
+
         try {
-            String urlString = "https://api.tfl.gov.uk/StopPoint/490008660N/Arrivals";
+            String urlString = "https://api.tfl.gov.uk/StopPoint/" + inputId + "/Arrivals";
             URL url = new URL(urlString);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
